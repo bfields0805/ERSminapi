@@ -116,9 +116,10 @@ namespace P1Client
                             ChangeTicketStatus(menu.ApproveOrDeny(tickets));
                             continue;
                         case 3:
-                            //menu.PromoteEmployeeMenu();
-                            break;
-                        case 4:
+                            Task.WaitAll(GetAllUsers());
+                            PromoteEmployee(menu.PromoteEmployeeMenu(users));
+                           continue;
+                        case 4 :
                             System.Environment.Exit(0);
                             break;
                     }
@@ -256,6 +257,13 @@ namespace P1Client
             response.EnsureSuccessStatusCode();
         }
 
+        public static async void PromoteEmployee(User employee)
+        {
+            var path = "/managers/promote";
 
+            HttpResponseMessage response = await client.PostAsJsonAsync(path, employee);
+            response.EnsureSuccessStatusCode();
+            
+        }
     }
 }

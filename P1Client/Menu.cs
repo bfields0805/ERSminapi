@@ -343,6 +343,52 @@
             return t;
         }
 
+        public User PromoteEmployeeMenu(List<User> employees)
+        {
+            User u = new User();
+
+            Title();
+
+            foreach(User user in employees)
+            {
+                Console.WriteLine(user);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Enter the Employee ID of the person being promoted");
+
+            bool choosing = true;
+            int choice = 0;
+
+            while (choosing)
+            {
+                if (!Int32.TryParse(Console.ReadLine(), out choice))
+                {
+                    Console.WriteLine("Invalid entry: just type in the ID number");
+                    continue ;
+                }
+
+                foreach (User user in employees)
+                {
+                    if(user.empId == choice)
+                    {
+                        u = user;
+                    }
+
+                }
+                if (u.empId == null)
+                {
+                    Console.WriteLine("That is not an Employee ID number");
+                    continue;
+                }
+
+
+
+                choosing = false;
+            }
+            
+            
+            return u;
+        }
 
 
 

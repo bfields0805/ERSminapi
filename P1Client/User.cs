@@ -54,8 +54,8 @@ namespace P1Client
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(empId + " ");
-            sb.Append(userName + " ");
+            sb.Append("Employee ID:" + empId + " Name: ");
+            sb.Append(userName + " Email: ");
             sb.Append(email + " ");
 
 
